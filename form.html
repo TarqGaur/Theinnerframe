@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Competition - Entry Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f2f0 0%, #f0e6a6 50%, #c9c2a3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f0e6a6, #c9c2a3);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.3)"/><circle cx="80" cy="40" r="1.5" fill="rgba(255,255,255,0.2)"/><circle cx="40" cy="70" r="1" fill="rgba(255,255,255,0.4)"/><circle cx="70" cy="20" r="1.5" fill="rgba(255,255,255,0.3)"/></svg>');
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #4a4237;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            color: #6b5d52;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        /* Authentication Styles */
+        .auth-container {
+            padding: 60px 30px;
+            text-align: center;
+        }
+
+        .auth-title {
+            font-size: 1.8em;
+            color: #4a4237;
+            margin-bottom: 20px;
+        }
+
+        .auth-subtitle {
+            color: #6b5d52;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .google-signin-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: #fff;
+            color: #4a4237;
+            padding: 15px 30px;
+            border: 2px solid #e8e0d3;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .google-signin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            border-color: #c9c2a3;
+        }
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* User Info Styles */
+        .user-info {
+            background: #f9f7f4;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #c9c2a3;
+        }
+
+        .user-details h3 {
+            color: #4a4237;
+            margin-bottom: 5px;
+        }
+
+        .user-details p {
+            color: #6b5d52;
+            font-size: 0.9em;
+        }
+
+        .signout-btn {
+            background: none;
+            border: 1px solid #c9c2a3;
+            color: #6b5d52;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-left: auto;
+            transition: all 0.3s ease;
+        }
+
+        .signout-btn:hover {
+            background: #c9c2a3;
+            color: #fff;
+        }
+
+        /* Form Styles */
+        .form-container {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #4a4237;
+            font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e8e0d3;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Georgia', serif;
+            background: #fefdfb;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #c9c2a3;
+            box-shadow: 0 0 0 3px rgba(201, 194, 163, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .file-upload-container {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+
+        .file-upload-label {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #f0e6a6, #c9c2a3);
+            border: 2px dashed #a69b87;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            color: #4a4237;
+        }
+
+        .file-upload-label:hover {
+            background: linear-gradient(135deg, #c9c2a3, #a69b87);
+            transform: translateY(-2px);
+        }
+
+        .file-upload-text {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .important-note {
+            background: #f9f7f4;
+            border-left: 4px solid #c9c2a3;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .important-note p {
+            margin: 0;
+            color: #4a4237;
+            font-style: italic;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #4a4237, #6b5d52);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(74, 66, 55, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(74, 66, 55, 0.4);
+        }
+
+        .category-description {
+            font-size: 0.9em;
+            color: #6b5d52;
+            margin-top: 5px;
+            font-style: italic;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f7f4;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #4a4237;
+            display: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #6b5d52;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e8e0d3;
+            border-top: 4px solid #c9c2a3;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .form-container,
+            .auth-container {
+                padding: 30px 20px;
+            }
+
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .signout-btn {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📸 Photography Competition</h1>
+            <p>Capture the world through your lens</p>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading">
+            <div class="spinner"></div>
+            <p>Initializing...</p>
+        </div>
+
+        <!-- Authentication Section -->
+        <div id="authSection" class="auth-container hidden">
+            <h2 class="auth-title">Welcome to Our Photography Competition</h2>
+            <p class="auth-subtitle">Please sign in with your Google account to participate in the competition. This
+                helps us verify entries and communicate with participants.</p>
+
+            <button id="googleSignInBtn" class="google-signin-btn">
+                <svg class="google-icon" viewBox="0 0 24 24">
+                    <path fill="#4285f4"
+                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                    <path fill="#34a853"
+                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                    <path fill="#fbbc05"
+                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                    <path fill="#ea4335"
+                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                </svg>
+                Continue with Google
+            </button>
+        </div>
+
+        <!-- Competition Form -->
+        <div id="competitionForm" class="form-container hidden">
+            <!-- User Info Display -->
+            <div id="userInfo" class="user-info">
+                <img id="userAvatar" class="user-avatar" src="" alt="User Avatar">
+                <div class="user-details">
+                    <h3 id="userName"></h3>
+                    <p id="userEmail"></p>
+                </div>
+                <button id="signOutBtn" class="signout-btn">Sign Out</button>
+            </div>
+
+            <form id="entryForm">
+                <div class="form-group">
+                    <label for="participantName">Participant Name *</label>
+                    <input type="text" id="participantName" name="participantName" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="instagram">Instagram ID *</label>
+                    <input type="text" id="instagram" name="instagram" placeholder="@your_instagram_handle" required>
+                </div>
+
+                <div class="important-note">
+                    <p><strong>📌 Important:</strong> Following our Instagram page is mandatory for entry validation.
+                        Make sure you're following us before submitting your entry!</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Competition Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select a category</option>
+                        <option value="the-unnoticed">The Unnoticed</option>
+                        <option value="rhythm-daily-life">The Rhythm of Daily Life</option>
+                    </select>
+                    <div class="category-description" id="categoryDesc"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="photoTitle">Photo Title *</label>
+                    <input type="text" id="photoTitle" name="photoTitle"
+                        placeholder="Give your photo a compelling title" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Your Photo *</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="photoUpload" name="photoUpload" class="file-upload" accept="image/*"
+                            required>
+                        <label for="photoUpload" class="file-upload-label">
+                            📁 Choose Photo
+                            <span class="file-upload-text">Click to browse or drag and drop your image</span>
+                        </label>
+                    </div>
+                    <div class="file-name" id="fileName"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Photo Description (Optional)</label>
+                    <input type="text" id="description" name="description"
+                        placeholder="Brief description of your photograph">
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Entry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-firestore-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-storage-compat.min.js"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-app-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-auth-compat.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/9.22.0/firebase-database-compat.min.js"></script>
+    <script>
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBD-dP6U2yatCIjBF4RfOoIxQBasFLlKGI",
+            authDomain: "innerframe-7fbbf.firebaseapp.com",
+            databaseURL: "https://innerframe-7fbbf-default-rtdb.firebaseio.com",
+            projectId: "innerframe-7fbbf",
+            storageBucket: "innerframe-7fbbf.firebasestorage.app",
+            messagingSenderId: "1073895900093",
+            appId: "1:1073895900093:web:0561d4d201bd2d35f508d4"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const auth = firebase.auth();
+        const database = firebase.database();
+
+        // Google Auth Provider
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.addScope('email');
+        provider.addScope('profile');
+
+        // DOM Elements
+        const loadingState = document.getElementById('loadingState');
+        const authSection = document.getElementById('authSection');
+        const competitionForm = document.getElementById('competitionForm');
+        const googleSignInBtn = document.getElementById('googleSignInBtn');
+        const signOutBtn = document.getElementById('signOutBtn');
+        const entryForm = document.getElementById('entryForm');
+
+        // User info elements
+        const userInfo = document.getElementById('userInfo');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        const userEmail = document.getElementById('userEmail');
+
+        // Form elements
+        const participantName = document.getElementById('participantName');
+        const emailField = document.getElementById('email');
+
+        // Category descriptions
+        const categoryDescriptions = {
+            'the-unnoticed': 'Capture the beauty in overlooked moments, hidden details, and everyday scenes that often go unnoticed.',
+            'rhythm-daily-life': 'Document the patterns, routines, and flowing moments that create the rhythm of our daily existence.'
+        };
+
+        // Utility function to convert file to base64
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result);
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        // Utility function to compress image
+        function compressImage(file, maxWidth = 1920, quality = 0.8) {
+            return new Promise((resolve) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const img = new Image();
+
+                img.onload = () => {
+                    // Calculate new dimensions
+                    let { width, height } = img;
+
+                    if (width > maxWidth) {
+                        height = (height * maxWidth) / width;
+                        width = maxWidth;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    // Draw and compress
+                    ctx.drawImage(img, 0, 0, width, height);
+                    canvas.toBlob(resolve, 'image/jpeg', quality);
+                };
+
+                img.src = URL.createObjectURL(file);
+            });
+        }
+
+        // Auth State Observer
+        auth.onAuthStateChanged((user) => {
+            loadingState.classList.add('hidden');
+
+            if (user) {
+                // User is signed in
+                showCompetitionForm(user);
+            } else {
+                // User is signed out
+                showAuthSection();
+            }
+        });
+
+        // Show Authentication Section
+        function showAuthSection() {
+            authSection.classList.remove('hidden');
+            competitionForm.classList.add('hidden');
+        }
+
+        // Show Competition Form
+        function showCompetitionForm(user) {
+            authSection.classList.add('hidden');
+            competitionForm.classList.remove('hidden');
+
+            // Populate user info
+            userAvatar.src = user.photoURL || 'https://via.placeholder.com/50';
+            userName.textContent = user.displayName || 'User';
+            userEmail.textContent = user.email;
+
+            // Pre-fill form fields
+            participantName.value = user.displayName || '';
+            emailField.value = user.email || '';
+
+            // Animate form groups
+            const formGroups = document.querySelectorAll('.form-group');
+            formGroups.forEach((group, index) => {
+                group.style.opacity = '0';
+                group.style.transform = 'translateY(20px)';
+
+                setTimeout(() => {
+                    group.style.transition = 'all 0.6s ease';
+                    group.style.opacity = '1';
+                    group.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+
+        // Google Sign In
+        googleSignInBtn.addEventListener('click', async () => {
+            try {
+                googleSignInBtn.disabled = true;
+                googleSignInBtn.textContent = 'Signing in...';
+
+                await auth.signInWithPopup(provider);
+            } catch (error) {
+                console.error('Error signing in:', error);
+                alert('Error signing in. Please try again.');
+
+                googleSignInBtn.disabled = false;
+                googleSignInBtn.innerHTML = `
+            <svg class="google-icon" viewBox="0 0 24 24">
+                <path fill="#4285f4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34a853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#fbbc05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                <path fill="#ea4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continue with Google
+        `;
+            }
+        });
+
+        // Sign Out
+        signOutBtn.addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+            } catch (error) {
+                console.error('Error signing out:', error);
+                alert('Error signing out. Please try again.');
+            }
+        });
+
+        // Category selection handler
+        document.getElementById('category').addEventListener('change', function () {
+            const desc = document.getElementById('categoryDesc');
+            const selectedCategory = this.value;
+
+            if (selectedCategory && categoryDescriptions[selectedCategory]) {
+                desc.textContent = categoryDescriptions[selectedCategory];
+                desc.style.display = 'block';
+            } else {
+                desc.style.display = 'none';
+            }
+        });
+
+        // File upload handler
+        document.getElementById('photoUpload').addEventListener('change', function () {
+            const fileName = document.getElementById('fileName');
+            const fileUploadLabel = document.querySelector('.file-upload-label');
+
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+
+                // Check file size (limit to 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size too large. Please select an image under 5MB.');
+                    this.value = '';
+                    return;
+                }
+
+                // Check file type
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select a valid image file.');
+                    this.value = '';
+                    return;
+                }
+
+                fileName.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                fileName.style.display = 'block';
+                fileUploadLabel.style.background = 'linear-gradient(135deg, #c9c2a3, #a69b87)';
+                fileUploadLabel.innerHTML = `✅ Photo Selected<span class="file-upload-text">Click to change photo</span>`;
+            } else {
+                fileName.style.display = 'none';
+                fileUploadLabel.style.background = 'linear-gradient(135deg, #f0e6a6, #c9c2a3)';
+                fileUploadLabel.innerHTML = `📁 Choose Photo<span class="file-upload-text">Click to browse or drag and drop your image</span>`;
+            }
+        });
+
+        // Form submission
+        entryForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const user = auth.currentUser;
+            if (!user) {
+                alert('Please sign in first.');
+                return;
+            }
+
+            // Basic validation
+            const requiredFields = ['phone', 'instagram', 'category', 'photoTitle', 'photoUpload'];
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (!element.value || (field === 'photoUpload' && !element.files[0])) {
+                    element.style.borderColor = '#e74c3c';
+                    isValid = false;
+                } else {
+                    element.style.borderColor = '#e8e0d3';
+                }
+            });
+
+            if (!isValid) {
+                alert('❌ Please fill in all required fields marked with *');
+                return;
+            }
+
+            try {
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processing Image...';
+
+                // Get the photo file
+                const photoFile = document.getElementById('photoUpload').files[0];
+
+                // Compress the image if it's too large
+                let processedFile = photoFile;
+                if (photoFile.size > 1024 * 1024) { // If larger than 1MB
+                    submitBtn.textContent = 'Compressing Image...';
+                    processedFile = await compressImage(photoFile);
+                }
+
+                // Convert to base64
+                submitBtn.textContent = 'Converting Image...';
+                const photoBase64 = await fileToBase64(processedFile);
+
+                // Prepare form data
+                submitBtn.textContent = 'Submitting Entry...';
+                const timestamp = Date.now();
+                const entryId = `entry_${user.uid}_${timestamp}`;
+
+                const formData = {
+                    entryId: entryId,
+                    userId: user.uid,
+                    participantName: participantName.value,
+                    email: emailField.value,
+                    phone: document.getElementById('phone').value,
+                    instagram: document.getElementById('instagram').value,
+                    category: document.getElementById('category').value,
+                    photoTitle: document.getElementById('photoTitle').value,
+                    description: document.getElementById('description').value,
+                    photoBase64: photoBase64,
+                    photoFileName: photoFile.name,
+                    photoSize: processedFile.size || photoFile.size,
+                    submittedAt: timestamp,
+                    submittedDate: new Date().toISOString(),
+                    userPhotoURL: user.photoURL || null,
+                    status: 'submitted'
+                };
+
+                // Save to Firebase Realtime Database
+                await database.ref('competition-entries').child(entryId).set(formData);
+
+                // Also save to user's entries for easy retrieval
+                await database.ref('user-entries').child(user.uid).child(entryId).set({
+                    entryId: entryId,
+                    photoTitle: formData.photoTitle,
+                    category: formData.category,
+                    submittedAt: timestamp,
+                    status: 'submitted'
+                });
+
+                alert('🎉 Thank you for your submission! Your entry has been received successfully. Make sure you\'re following our Instagram page for updates and results!');
+
+                // Reset form
+                entryForm.reset();
+                document.getElementById('fileName').style.display = 'none';
+                document.querySelector('.file-upload-label').style.background = 'linear-gradient(135deg, #f0e6a6, #c9c2a3)';
+                document.querySelector('.file-upload-label').innerHTML = `📁 Choose Photo<span class="file-upload-text">Click to browse or drag and drop your image</span>`;
+                document.getElementById('categoryDesc').style.display = 'none';
+
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('❌ Error submitting your entry. Please try again.');
+            } finally {
+                const submitBtn = document.querySelector('.submit-btn');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Entry';
+            }
+        });
+
+        // Optional: Function to retrieve user's entries
+        async function getUserEntries(userId) {
+            try {
+                const snapshot = await database.ref('user-entries').child(userId).once('value');
+                return snapshot.val() || {};
+            } catch (error) {
+                console.error('Error retrieving user entries:', error);
+                return {};
+            }
+        }
+
+        // Optional: Function to retrieve all entries (admin function)
+        async function getAllEntries() {
+            try {
+                const snapshot = await database.ref('competition-entries').once('value');
+                return snapshot.val() || {};
+            } catch (error) {
+                console.error('Error retrieving entries:', error);
+                return {};
+            }
+        }
+    </script>
+</body>
+
+</html>

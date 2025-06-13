@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime.js Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/MTLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FBXLoader.js"></script>
+
+
+    <link rel="stylesheet" href="st.css">
+    <title>The Frame Hunt 2025</title>
+    <link rel="icon"  href="logo.jpeg">
+
+    <!-- FOnts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sevillana&family=WDXL+Lubrifont+TC&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <canvas id="bg"></canvas>
+
+    <div class="scroll-container" id="scrollContainer">
+        <section class="panel" style="background: hsla(5, 100%, 69%, 0.1);">
+            <div class="s1">
+                <h1 class="head subtle-box ">The Frame Hunt</h1>
+                <h2 class="head2">2025</h2>
+                <div class="countdown-timer">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <label>Days</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <label>Hours</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <label>Minutes</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <label>Seconds</label>
+                    </div>
+                </div>
+
+                <button class="register" onclick="window.location.href='form.html'">Register Now ₹49</button>
+                <h2 class="head3 subtle-box">Organised by innerframe</h2>
+
+            </div>
+        </section>
+        <section class="panel" style="background: hsla(257, 24%, 47%, 0.1);">
+            <div class="s2">
+                <h1 class="theme subtle-box  ">Theme</h1>
+                <h2 class="thdet">Our vision is to build a community that fosters hands-on learning and creative
+                    exploration through photography and filmmaking, The Frame Hunt is designed to give people the
+                    opportunity to discover photography and short filmmaking techniques. it's a chance to learn, to
+                    share, and most importontly, to grow as visual storytellers. Our goal is to empower participants
+                    with knowledge that will improve their skills.</h2>
+            </div>
+        </section>
+        <section class="panel" style="background: hsla(43, 37%, 74%, 0.1)">
+            <div class="s3">
+                <div class="left-right-container">
+                    <div class="left">
+                        <div class="l">
+                            <div class="cat1">The Unnoticed</div>
+                            <div class="cdes1">Capture the essence of the theme, alling photographers to find beauty in
+                                the overlooked details-small objects, textures, or hidden corners of daily life.
+                                Transform the mundane into somthing magical.</div>
+                            <div class="cat1" style="font-size: 20px; margin-left: 50%;">- Mobile Category</div>
+
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="r">
+                            <div class="cat2">The Rythem Of daily Life</div>
+                            <div class="cdes2">Capture the essence of the theme, alling photographers to find beauty in
+                                the overlooked details-small objects, textures, or hidden corners of daily life.
+                                Transform the mundane into somthing magical.</div>
+                            <div class="cat2" style="font-size: 20px; margin-left: 50%; ">- DSLR Category</div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="panel s4" style="background: hsla(32, 93%, 54%, 0.1);">
+            <div class="container2">
+                <div class="timeline-header">
+                    <h1>Event Timeline</h1>
+                    <p>Key dates and milestones for our upcoming event</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="event-title">Launch</h3>
+                            <div class="event-date">15 June 2025</div>
+                            <div class="event-description">
+                                Official launch of the event. Registration opens and participants can begin submitting
+                                their entries.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="event-title">Last Submission Date</h3>
+                            <div class="event-date">30 June 2025</div>
+                            <div class="event-description">
+                                Final deadline for all submissions. No entries will be accepted after this date. Make
+                                sure to submit your work before midnight.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="event-title">Evaluation Period</h3>
+                            <div class="event-date">30 June - 10 July 2025</div>
+                            <div class="event-description">
+                                Our expert panel will review and evaluate all submissions during this period.
+                                Participants will be notified of any updates.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3 class="event-title">Results Announcement</h3>
+                            <div class="event-date">10 July 2025</div>
+                            <div class="event-description">
+                                Winners will be announced and results published. Congratulations to all participants for
+                                their outstanding contributions!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="panel s5" style="background: hsla(32, 55%, 35%, 0.1);">
+            <section class="prizes-section">
+                <div class="section-header">
+                    <h1 class="section-title">Competition Prizes</h1>
+                    <p class="section-subtitle">Celebrating creativity and vision</p>
+                </div>
+
+                <div class="categories-container">
+                    <div class="category">
+                        <h2 class="category-title">The Unnoticed</h2>
+                        <div class="prizes-list">
+                            <div class="prize-item first">
+                                <span class="prize-position">🥇 1st Prize</span>
+                                <span class="prize-amount">₹1000</span>
+                            </div>
+                            <div class="prize-item second">
+                                <span class="prize-position">🥈 2nd Prize</span>
+                                <span class="prize-amount">₹750</span>
+                            </div>
+                            <div class="prize-item third">
+                                <span class="prize-position">🥉 3rd Prize</span>
+                                <span class="prize-amount">₹500</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="category">
+                        <h2 class="category-title">The Rhythm Of Daily Life</h2>
+                        <div class="prizes-list">
+                            <div class="prize-item first">
+                                <span class="prize-position">🥇 1st Prize</span>
+                                <span class="prize-amount">₹1000</span>
+                            </div>
+                            <div class="prize-item second">
+                                <span class="prize-position">🥈 2nd Prize</span>
+                                <span class="prize-amount">₹750</span>
+                            </div>
+                            <div class="prize-item third">
+                                <span class="prize-position">🥉 3rd Prize</span>
+                                <span class="prize-amount">₹500</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="panel s5" style="background: hsla(219, 41%, 70%, 0.1);">
+            <section class="social-section">
+                <div class="grid-background"></div>
+                <div class="floating-orbs">
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                    <div class="orb"></div>
+                </div>
+
+                <div class="section-container">
+                    <h2 class="section-title">Our Social</h2>
+
+                    <div class="social-container">
+                        <div class="social-card instagram">
+                            <div class="social-icon-container">
+                                <div class="icon-glow"></div>
+                                <img alt="inner" src="Instagram_Icon_PNG-removebg-preview.png" style="height: 100px;">
+                            </div>
+                            <h3 class="social-title">Instagram</h3>
+                            <p class="social-description">Follow us for daily photography inspiration and
+                                behind-the-scenes content</p>
+                            <a href="https://www.instagram.com/innerframe_forge?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                                class="social-link">
+                                Follow Us
+                                <span>→</span>
+                            </a>
+                        </div>
+
+                        <div class="social-card unstop">
+                            <div class="social-icon-container">
+                                <div class="icon-glow"></div>
+                                <img alt="inner" src="unstop.jpg" style="height: 100px; border-radius: 20px;">
+
+                            </div>
+                            <h3 class="social-title">Unstop</h3>
+                            <p class="social-description">Join our community and participate in exciting photography
+                                competitions</p>
+                            <a href="#" class="social-link">
+                                Join Now
+                                <span>→</span>
+                            </a>
+                        </div>
+
+                        <div class="social-card brochure">
+                            <div class="social-icon-container">
+                                <div class="icon-glow"></div>
+                                <img alt="inner" src="icons8-document.svg" style="height: 100px;">
+                            </div>
+                            <h3 class="social-title">Brochure</h3>
+                            <p class="social-description">Download our comprehensive guide to photography services and
+                                workshops</p>
+                            <a href="#1.pdf" class="social-link" download>
+                                Download PDF
+                                <span>↓</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+
+
+    </div>
+
+    <script>
+
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+            45,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+
+        camera.position.set(0, 0, 2);
+        camera.lookAt(0, 0, 0);
+
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bg'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        const light = new THREE.PointLight(0xffffff, 1);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        let particles;
+        let cameraModel;
+
+        function createParticles() {
+            const particleCount = 500;
+            const geometry = new THREE.BufferGeometry();
+            const positions = new Float32Array(particleCount * 3);
+
+            for (let i = 0; i < particleCount; i++) {
+                const i3 = i * 3;
+                positions[i3] = (Math.random() - 0.5) * 30;
+                positions[i3 + 1] = (Math.random() - 0.5) * 30;
+                positions[i3 + 2] = (Math.random() - 0.5) * 30;
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            const material = new THREE.PointsMaterial({
+                color: new THREE.Color("#ffffff"),
+                size: 0.35,
+                transparent: true,
+                opacity: 0.9,
+                blending: THREE.AdditiveBlending,
+                depthWrite: false,
+                sizeAttenuation: true
+            });
+
+            particles = new THREE.Points(geometry, material);
+            particles.name = "snowParticles";
+            scene.add(particles);
+        }
+
+
+        createParticles();
+
+        const loader = new THREE.OBJLoader();
+        const textureLoader = new THREE.TextureLoader();
+
+        const bodyMaterial = new THREE.MeshStandardMaterial({
+            map: textureLoader.load('textures/cameraBody_Mat_baseColor.png'),
+            roughnessMap: textureLoader.load('textures/cameraBody_Mat_roughness.png'),
+            metalnessMap: textureLoader.load('textures/cameraBody_Mat_metallic.png'),
+            normalMap: textureLoader.load('textures/cameraBody_Mat_normal.png'),
+            metalness: 1.0,
+            roughness: 1.0,
+        });
+
+        const lensMaterial = new THREE.MeshStandardMaterial({
+            map: textureLoader.load('textures/cameraLens_Mat_baseColor.png'),
+            roughnessMap: textureLoader.load('textures/cameraLens_Mat_roughness.png'),
+            metalnessMap: textureLoader.load('textures/cameraLens_Mat_metallic.png'),
+            transparent: true,
+            opacity: 0.5,
+            metalness: 1.0,
+        });
+
+        loader.load('camera.obj', function (object) {
+            cameraModel = object;
+            object.scale.set(0.2, 0.2, 0.2);
+            object.position.y = -1;
+
+            object.traverse(function (child) {
+                if (child instanceof THREE.Mesh) {
+                    const wireframe = new THREE.WireframeGeometry(child.geometry);
+                    const line = new THREE.LineSegments(wireframe);
+                    line.material.depthTest = true;
+                    line.material.opacity = 0.25;
+                    line.material.transparent = true;
+                    line.material.color = new THREE.Color("#BDB395");
+                    object.add(line);
+                    child.visible = false;
+                }
+            });
+
+            scene.add(object);
+        });
+
+        const scrollContainer = document.getElementById('scrollContainer');
+
+        // scrollContainer.addEventListener('scroll', () => {
+        //     const scrollTop = scrollContainer.scrollTop;
+        //     const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        //     const t = scrollTop / scrollHeight;
+
+        //     if (t < 0.3) {
+        //         camera.position.z = 2 + t * 5;     // Zoom out
+        //         camera.position.y = t * 10.5;       // Go slightly up
+        //         camera.position.x = t * 10.2;       // Move to side
+        //         camera.lookAt(0, 0, 0);
+
+        //         if (particles) {
+        //             particles.rotation.y = t * 2;
+        //             particles.rotation.x = t * 1.5;
+        //         }
+        //     }
+
+        //     if (t >= 0.3) {
+        //         const rotateT = t - 0.3;
+        //         scene.rotation.y = rotateT * 3.5;
+
+        //         if (particles) {
+        //             particles.rotation.y = 0.6 + rotateT * 2;
+        //             particles.rotation.z = rotateT * 1;
+        //         }
+        //     }
+        // });
+
+        scrollContainer.addEventListener('scroll', () => {
+    const scrollTop = scrollContainer.scrollTop;
+    const scrollHeight = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+    const t = scrollTop / scrollHeight;
+
+    if (t < 0.3) {
+        camera.position.z = 2 + t * 5;     // Zoom out
+        camera.position.y = t * 10.5;       // Go slightly up
+        camera.position.x = t * 10.2;       // Move to side
+        camera.lookAt(0, 0, 0);
+
+        if (particles) {
+            particles.rotation.y = t * 2;
+            particles.rotation.x = t * 1.5;
+        }
+    }
+
+    if (t >= 0.3 && t < 0.9) {
+        const rotateT = t - 0.3;
+        scene.rotation.y = rotateT * 3.5;
+
+        if (particles) {
+            particles.rotation.y = 0.6 + rotateT * 2;
+            particles.rotation.z = rotateT * 1;
+        }
+    }
+
+    if (t >= 0.9) {
+        // Final phase - semi top front view
+        const finalT = (t - 0.9) / 0.1;
+        
+        // Smooth transition to semi top-front view
+        const currentX = 10.2 * 0.3;
+        const currentY = 10.5 * 0.3;
+        const currentZ = 2 + 5 * 0.3;
+        
+        camera.position.x = currentX * (1 - finalT);          // Move to center
+        camera.position.y = currentY + finalT * 8;            // Move higher up
+        camera.position.z = currentZ + finalT * 6;            // Move further back
+        camera.lookAt(0, 0, 0);  // Still looking at center
+        
+        // Keep the scene rotation but slow it down
+        const rotateT = 0.6;
+        scene.rotation.y = rotateT * 3.5;
+
+        if (particles) {
+            particles.rotation.y = 0.6 + rotateT * 2;
+            particles.rotation.z = rotateT * 1;
+        }
+    }
+});
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const time = Date.now() * 0.001;
+
+            if (particles) {
+                particles.rotation.y += 0.005;
+                particles.rotation.x += 0.002;
+
+                if (Math.floor(time) % 3 === 0 && Math.floor(time * 10) % 10 === 0) {
+                    console.log('Particles position:', particles.position);
+                    console.log('Particles visible:', particles.visible);
+                }
+            }
+
+            const testParticles = scene.getObjectByName('testParticles');
+            if (testParticles) {
+                testParticles.rotation.y += 0.01;
+                testParticles.rotation.x += 0.005;
+            }
+
+            renderer.render(scene, camera);
+        }
+        animate();
+        anime({
+            targets: '.subtle-box',
+            keyframes: [
+                { translateY: 0 },
+                { translateY: -2 },
+                { translateY: 0 }
+            ],
+            duration: 2000,
+            easing: 'easeInOutSine',
+            loop: true,
+            delay: anime.stagger(300)
+        });
+
+
+
+
+
+
+
+
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const countdown = () => {
+            const deadline = new Date("July 1, 2025 23:59:59").getTime();
+            const now = new Date().getTime();
+            const gap = deadline - now;
+
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+
+            const d = Math.floor(gap / day),
+                h = Math.floor((gap % day) / hour),
+                m = Math.floor((gap % hour) / minute),
+                s = Math.floor((gap % minute) / second);
+
+            document.getElementById("days").textContent = String(d).padStart(2, '0');
+            document.getElementById("hours").textContent = String(h).padStart(2, '0');
+            document.getElementById("minutes").textContent = String(m).padStart(2, '0');
+            document.getElementById("seconds").textContent = String(s).padStart(2, '0');
+        };
+
+        setInterval(countdown, 1000);
+
+
+
+
+    </script>
+</body>
+
+</html>
