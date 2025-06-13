@@ -1393,10 +1393,10 @@ canvas {
 
 @media screen and (max-width: 667px) {
     .head {
-        font-size: 85px;
+        font-size: 80px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        width: 90%;
+        width: 100vw;
         margin: auto;
     }
 
@@ -1415,7 +1415,9 @@ canvas {
         height: 200vh;
     }
     .l,.r{
-        height: 35vh;
+        max-height: 40vh;
+        height: auto;
+
         
     }.l{
         margin-bottom: 15px;
